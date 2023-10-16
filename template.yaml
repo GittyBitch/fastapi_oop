@@ -24,26 +24,43 @@ Resources:
           Properties:
             Path: /
             Method: get
+            Auth:
+              Authorizer: NONE
         Swagger:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /docs
             Method: get
+            Auth:
+              Authorizer: NONE
+         Redoc:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /redoc
+            Method: get
+            Auth:
+              Authorizer: NONE
         Openapi:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /openapi.json
             Method: get
+            Auth:
+              Authorizer: NONE
         AnimalsGet:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /animals
             Method: get
+            Auth:
+              Authorizer: NONE
         AnimalPost:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /animal
             Method: post
+              Auth:
+              Authorizer: NONE
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
