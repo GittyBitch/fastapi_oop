@@ -5,6 +5,7 @@ class StudentModel(BaseModel):
         id: str
         name: str
         sex: str
-        castrated: bool
+        castrated: str
+        stars:str
 
 

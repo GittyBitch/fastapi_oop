@@ -27,23 +27,9 @@
             <th>Name</th>
             <th>Kastriert</th>
 	    <th>Stars</th>
+	    <!--	    <th>Update</th> -->
         </tr>
-        <tr>
-            <td>John Doe</td>
-            <td>YES</td>
-            <td>***</td>
-        </tr>
-        <tr>
-            <td>Jane Beispiel</td>
-            <td>MAYBE</td>
-            <td>**</td>
-        </tr>
-         <tr>
-            <td>Jake Socke</td>
-            <td>SOON</td>
-            <td>****</td>
-        </tr>
- 
+
     </table>
 </div>
 
@@ -63,6 +49,49 @@
         }
         document.getElementById(tabId).classList.add('active');
     }
+
+	/*
+fetch('/students')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+*/
+
+function updateButtons() {
+
+}
+
+async function populateTable(tableId, edit=false) {
+    try {
+        const response = await fetch('/students');
+        const data = await response.json();
+
+        // Get the table element
+        const table = document.querySelector(tableId);
+
+        // Remove any existing rows (except the header)
+        //table.querySelectorAll('tr:not(:first-child)').forEach(row => row.remove());
+
+        // Populate the table with new data
+        data.forEach(student => {
+            const row = table.insertRow();
+            row.insertCell().textContent = student.name;
+            row.insertCell().textContent = student.castrated;
+	    if(!edit)
+            	row.insertCell().textContent = student.stars;
+	    else
+            	row.insertCell().textContent = student.stars;
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+populateTable('#students table');
+//populateTable('#teachers table', true);
+
+
+
 </script>
 
 </body>
